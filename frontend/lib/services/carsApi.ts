@@ -27,21 +27,17 @@ export interface CarsQueryParams {
   q?: string;
 }
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_CARS_API_BASE_URL || "http://localhost:4000/api";
-
 export const carsApi = createApi({
   reducerPath: "carsApi",
-  baseQuery: fetchBaseQuery({ baseUrl }),
+  baseQuery: fetchBaseQuery({ baseUrl: "/api" }), // ✅ Appelle le proxy
   endpoints: (builder) => ({
     getCars: builder.query<CarsResponse, CarsQueryParams>({
-      query: (params) => {
+      query: (params = {}) => {
         const searchParams = new URLSearchParams();
         if (params.page) searchParams.append("page", params.page.toString());
         if (params.size) searchParams.append("size", params.size.toString());
         if (params.q) searchParams.append("q", params.q);
-
-        return `/cars?${searchParams.toString()}`;
+        return `cars?${searchParams.toString()}`;
       },
     }),
   }),

@@ -21,11 +21,7 @@ export function CarsGalleryInfinite({
   const loadedPagesRef = useRef<Set<number>>(new Set());
   const carModelsRef = useRef<Set<string>>(new Set());
 
-  const { data, isLoading } = useGetCarsQuery({
-    page,
-    size,
-    q: searchQuery,
-  });
+  const { data, isLoading } = useGetCarsQuery({ page, size, q: searchQuery });
 
   // Reset when search query changes
   useEffect(() => {
