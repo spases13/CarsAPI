@@ -15,7 +15,7 @@ export function CarCard({ car }: CarCardProps) {
           src={car.image}
           alt={car.name}
           fill
-          className="object-cover"
+          className="object-contain fade-in px-4"
           unoptimized
         />
       </div>

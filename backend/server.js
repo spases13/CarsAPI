@@ -7,17 +7,15 @@ const app = express();
 
 app.use(cors());
 
-app.set("trust proxy", 1);
+// Ensure all cars have sequential IDs starting from 1
+const validateAndEnrichCars = (carsData) => {
+  return carsData.map((car, index) => ({
+    id: car.id || index + 1,
+    ...car,
+  }));
+};
 
-const apiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  limit: 300,
-  standardHeaders: true,
-  legacyHeaders: false,
-  message: { error: "Too many requests, please try again later." },
-});
-
-app.use("/api", apiLimiter);
+const enrichedCars = validateAndEnrichCars(cars);
 
 app.get("/api/cars", (req, res) => {
   const page = Math.max(parseInt(req.query.page, 10) || 1, 1);
@@ -25,16 +23,28 @@ app.get("/api/cars", (req, res) => {
   const query = (req.query.q || "").toString().trim().toLowerCase();
 
   const filteredCars = query
-    ? cars.filter((car) => {
+    ? enrichedCars.filter((car) => {
         const name = car.name.toLowerCase();
         const brand = car.brand.toLowerCase();
         return name.includes(query) || brand.includes(query);
       })
-    : cars;
+    : enrichedCars;
 
-  const total = filteredCars.length;
+  const uniqueCars = (() => {
+    const seen = new Set();
+    return filteredCars.filter((car) => {
+      const key = `${car.brand.toLowerCase()}-${car.name.toLowerCase()}`;
+      if (seen.has(key)) {
+        return false;
+      }
+      seen.add(key);
+      return true;
+    });
+  })();
+
+  const total = uniqueCars.length;
   const start = (page - 1) * size;
-  const items = filteredCars.slice(start, start + size);
+  const items = uniqueCars.slice(start, start + size);
 
   res.json({
     page,

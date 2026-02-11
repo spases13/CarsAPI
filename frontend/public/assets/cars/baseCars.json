@@ -1,0 +1,161 @@
+[
+  {
+    "id": 1,
+    "name": "Audi R8",
+    "brand": "Audi",
+    "brandLogo": "/assets/cars/brands/audi.png",
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "seats": 2,
+    "image": "/assets/cars/audi_r8.png"
+  },
+  {
+    "id": 2,
+    "name": "BMW M3",
+    "brand": "BMW",
+    "brandLogo": "/assets/cars/brands/bmw.png",
+    "fuel": "Petrol",
+    "transmission": "Manual",
+    "seats": 4,
+    "image": "/assets/cars/bmw_m3.png"
+  },
+  {
+    "id": 3,
+    "name": "Chevrolet Corvette",
+    "brand": "Chevrolet",
+    "brandLogo": "/assets/cars/brands/chevrolet.png",
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "seats": 2,
+    "image": "/assets/cars/chevrolet_corvette.png"
+  },
+  {
+    "id": 4,
+    "name": "Dodge Challenger",
+    "brand": "Dodge",
+    "brandLogo": "/assets/cars/brands/dodge.png",
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "seats": 4,
+    "image": "/assets/cars/dodge_challenger.png"
+  },
+  {
+    "id": 5,
+    "name": "Dodge Charger",
+    "brand": "Dodge",
+    "brandLogo": "/assets/cars/brands/dodge.png",
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "seats": 5,
+    "image": "/assets/cars/dodge_charger.png"
+  },
+  {
+    "id": 6,
+    "name": "Ferrari 488 GTB",
+    "brand": "Ferrari",
+    "brandLogo": "/assets/cars/brands/ferrari.png",
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "seats": 2,
+    "image": "/assets/cars/ferrari_488_gtb.png"
+  },
+  {
+    "id": 7,
+    "name": "Ferrari Testarossa",
+    "brand": "Ferrari",
+    "brandLogo": "/assets/cars/brands/ferrari.png",
+    "fuel": "Petrol",
+    "transmission": "Manual",
+    "seats": 2,
+    "image": "/assets/cars/ferrari_testarossa.png"
+  },
+  {
+    "id": 8,
+    "name": "Ford Escape",
+    "brand": "Ford",
+    "brandLogo": "/assets/cars/brands/ford.png",
+    "fuel": "Hybrid",
+    "transmission": "Automatic",
+    "seats": 5,
+    "image": "/assets/cars/ford_escape.png"
+  },
+  {
+    "id": 9,
+    "name": "Ford Mustang",
+    "brand": "Ford",
+    "brandLogo": "/assets/cars/brands/ford.png",
+    "fuel": "Petrol",
+    "transmission": "Manual",
+    "seats": 4,
+    "image": "/assets/cars/ford_mustang.png"
+  },
+  {
+    "id": 10,
+    "name": "Lamborghini Aventador",
+    "brand": "Lamborghini",
+    "brandLogo": "/assets/cars/brands/lamborghini.png",
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "seats": 2,
+    "image": "/assets/cars/lamborghini_aventador.png"
+  },
+  {
+    "id": 11,
+    "name": "Mercedes-Benz S-Class",
+    "brand": "Mercedes-Benz",
+    "brandLogo": "/assets/cars/brands/mercedes_benz.png",
+    "fuel": "Hybrid",
+    "transmission": "Automatic",
+    "seats": 5,
+    "image": "/assets/cars/mercedes_benz_s_class.png"
+  },
+  {
+    "id": 12,
+    "name": "Mini Cooper S",
+    "brand": "Mini",
+    "brandLogo": "/assets/cars/brands/mini.png",
+    "fuel": "Petrol",
+    "transmission": "Manual",
+    "seats": 4,
+    "image": "/assets/cars/mini_cooper_s.png"
+  },
+  {
+    "id": 13,
+    "name": "Porsche 911",
+    "brand": "Porsche",
+    "brandLogo": "/assets/cars/brands/porsche.png",
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "seats": 2,
+    "image": "/assets/cars/porsche_911.png"
+  },
+  {
+    "id": 14,
+    "name": "Subaru Legacy",
+    "brand": "Subaru",
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "seats": 5,
+    "image": "/assets/cars/subaru_legacy.png"
+  },
+  {
+    "id": 15,
+    "name": "Tesla Model S",
+    "brand": "Tesla",
+    "brandLogo": "/assets/cars/brands/tesla.png",
+    "fuel": "EV",
+    "transmission": "Automatic",
+    "seats": 5,
+    "image": "/assets/cars/tesla_model_s.png"
+  },
+  {
+    "id": 16,
+    "name": "Toyota Camry",
+    "brand": "Toyota",
+    "brandLogo": "/assets/cars/brands/toyota.png",
+    "fuel": "Hybrid",
+    "transmission": "Automatic",
+    "seats": 5,
+    "image": "/assets/cars/toyota_camry.png"
+  }
+]

@@ -1,7 +1,6 @@
 "use client";
 
 import { CarsGalleryInfinite } from "@/components/cars/CarsGalleryInfinite";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { useState } from "react";
 
 export default function Home() {
@@ -14,7 +13,6 @@ export default function Home() {
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
             Cars Gallery
           </h1>
-          <ThemeToggle />
         </div>
 
         <div className="mb-8">
@@ -29,7 +27,7 @@ export default function Home() {
           />
         </div>
 
-        <CarsGalleryInfinite size={5} searchQuery={searchQuery} />
+        <CarsGalleryInfinite size={10} searchQuery={searchQuery} />
       </main>
     </div>
   );

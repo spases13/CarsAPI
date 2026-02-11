@@ -27,9 +27,12 @@ export interface CarsQueryParams {
   q?: string;
 }
 
+const baseUrl =
+  process.env.NEXT_PUBLIC_CARS_API_BASE_URL || "http://localhost:4000/api";
+
 export const carsApi = createApi({
   reducerPath: "carsApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:4000/api" }),
+  baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getCars: builder.query<CarsResponse, CarsQueryParams>({
       query: (params) => {

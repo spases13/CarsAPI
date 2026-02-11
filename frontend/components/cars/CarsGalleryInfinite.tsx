@@ -11,13 +11,15 @@ interface CarsGalleryInfiniteProps {
 }
 
 export function CarsGalleryInfinite({
-  size = 5,
+  size = 10,
   searchQuery,
 }: CarsGalleryInfiniteProps) {
   const [page, setPage] = useState(1);
   const [allCars, setAllCars] = useState<any[]>([]);
   const touchRef = useRef<HTMLDivElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const loadedPagesRef = useRef<Set<number>>(new Set());
+  const carModelsRef = useRef<Set<string>>(new Set());
 
   const { data, isLoading } = useGetCarsQuery({
     page,
@@ -29,22 +31,33 @@ export function CarsGalleryInfinite({
   useEffect(() => {
     setPage(1);
     setAllCars([]);
+    loadedPagesRef.current.clear();
+    carModelsRef.current.clear();
   }, [searchQuery]);
 
   // Update accumulated cars when new data arrives
   useEffect(() => {
-    if (data?.items) {
-      if (page === 1) {
-        setAllCars(data.items);
-      } else {
-        setAllCars((prev) => {
-          const existingIds = new Set(prev.map((car) => car.id));
-          const newCars = data.items.filter((car) => !existingIds.has(car.id));
-          return [...prev, ...newCars];
-        });
-      }
+    if (!data?.items || typeof data.page !== "number") {
+      return;
     }
-  }, [data?.items, page]);
+
+    if (loadedPagesRef.current.has(data.page)) {
+      return;
+    }
+
+    loadedPagesRef.current.add(data.page);
+
+    if (data.page === 1) {
+      setAllCars(data.items);
+      return;
+    }
+
+    setAllCars((prev) => {
+      const existingIds = new Set(prev.map((car) => car.id));
+      const newCars = data.items.filter((car) => !existingIds.has(car.id));
+      return [...prev, ...newCars];
+    });
+  }, [data?.items, data?.page]);
 
   // Setup Intersection Observer for infinite scroll
   useEffect(() => {
@@ -78,7 +91,7 @@ export function CarsGalleryInfinite({
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {allCars.map((car) => (
-          <CarCard key={`car-${car.id}`} car={car} />
+          <CarCard key={car.id} car={car} />
         ))}
       </div>
 
@@ -86,7 +99,7 @@ export function CarsGalleryInfinite({
       {isLoading && allCars.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
           {Array.from({ length: size }).map((_, i) => (
-            <CarCardSkeleton key={`skeleton-loading-${page}-${i}`} />
+            <CarCardSkeleton key={`skeleton-bottom-${page}-${i}`} />
           ))}
         </div>
       )}
