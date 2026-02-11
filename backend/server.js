@@ -1,10 +1,23 @@
 const express = require("express");
 const cors = require("cors");
+const rateLimit = require("express-rate-limit");
 const { cars } = require("./data/cars");
 
 const app = express();
 
 app.use(cors());
+
+app.set("trust proxy", 1);
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 300,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Too many requests, please try again later." },
+});
+
+app.use("/api", apiLimiter);
 
 app.get("/api/cars", (req, res) => {
   const page = Math.max(parseInt(req.query.page, 10) || 1, 1);
